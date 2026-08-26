@@ -231,6 +231,51 @@
     document.body.removeChild(ta);
   }
 
+  /* ---------- 6.1 通用复制 + Toast ---------- */
+  let toastTimer = null;
+  function showToast(msg) {
+    let t = document.getElementById("clip-toast");
+    if (!t) {
+      t = document.createElement("div");
+      t.id = "clip-toast";
+      t.className = "clip-toast";
+      document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove("show"); }, 1600);
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    fallbackCopy(text);
+    return Promise.resolve();
+  }
+
+  // 联系栏一键复制（手机号 / 邮箱 / QQ / 所在地）
+  document.querySelectorAll(".contact-copy").forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const val = btn.getAttribute("data-copy") || "";
+      if (!val) return;
+      copyText(val).then(function () {
+        showToast("已复制：" + val);
+        const icon = btn.querySelector("i");
+        if (icon) {
+          const old = icon.className;
+          icon.className = "fa-solid fa-check";
+          setTimeout(function () { icon.className = old; }, 1400);
+        }
+      }).catch(function () {
+        showToast("复制失败，请手动选择");
+      });
+    });
+  });
+
   /* ---------- 7. Hero 角色标签切换器（打字机 + 自动轮播） ---------- */
   (function initRoleSwitcher() {
     const switcher = document.getElementById("hero-role-switcher");
@@ -413,8 +458,10 @@
             src = "assets/awards/" + slug + (count > 1 ? "-" + (i + 1) : "") + ".jpg";
           }
           img.className = "award-img";
-          img.src = src;
+          img.loading = "lazy";
+          img.decoding = "async";
           img.alt = title + (count > 1 ? " " + (i + 1) : "");
+          img.onload = function () { img.classList.add("loaded"); };
           img.onerror = function () { img.style.display = "none"; };
           modalBody.appendChild(img);
         }
