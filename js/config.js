@@ -16,6 +16,6 @@
    仅本机可见。
    ============================================================ */
 window.SITE_CONFIG = {
-  SUPABASE_URL: "", // 例如 "https://abcd1234.supabase.co"
-  SUPABASE_KEY: ""  // anon public key（"eyJhbGciOi..." 开头）
+  SUPABASE_URL: "https://hqtbncqqvglmlmbjxplp.supabase.co", // Project URL
+  SUPABASE_KEY: "sb_publishable_Mxv0QHG2MMYSvRjxupqJLQ_bzJfCVPC"  // publishable(anon) key，公开安全
 };
