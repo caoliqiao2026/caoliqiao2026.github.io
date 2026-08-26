@@ -111,6 +111,9 @@
       return;
     }
 
+    // 已配置：隐藏"未连接"提示
+    if (noConfig) noConfig.hidden = true;
+
     // 恢复本次浏览器会话的登录态
     try {
       passHash = sessionStorage.getItem(SESSION_KEY) || "";
