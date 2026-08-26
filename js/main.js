@@ -485,4 +485,67 @@
       if (e.key === "Escape") closeModal();
     });
   }
+
+  /* ---------- 8. 「打个招呼」按钮粒子特效 ----------
+     点击在鼠标/触摸位置飘散 6~10 个爱心/花朵/星星粒子，
+     随机轨迹、大小、旋转，缓缓上升并淡出。
+     使用 Web Animations API：仅 transform/opacity（GPU 合成），
+     无永久 rAF 循环，动画结束自动 remove()，零残留。 */
+  function initGreetParticles() {
+    const btn = document.getElementById("say-hi");
+    if (!btn) return;
+
+    // 全屏固定层，承载所有粒子（不拦截点击）
+    const layer = document.createElement("div");
+    layer.id = "greet-layer";
+    layer.setAttribute("aria-hidden", "true");
+    document.body.appendChild(layer);
+
+    // 粒子图形：爱心 / 花朵 / 星星，混合色彩更温暖
+    const GLYPHS = ["❤️", "💕", "🌸", "🌺", "🌼", "⭐", "🌟", "✨"];
+    const rand = function (min, max) { return min + Math.random() * (max - min); };
+
+    function burst(x, y) {
+      const n = Math.floor(rand(6, 11)); // 6~10 个
+      for (let i = 0; i < n; i++) {
+        const p = document.createElement("span");
+        p.className = "greet-particle";
+        p.textContent = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+        const size = rand(14, 30);
+        p.style.left = x + "px";
+        p.style.top = y + "px";
+        p.style.fontSize = size + "px";
+        layer.appendChild(p);
+
+        const angle = rand(0, Math.PI * 2);
+        const spread = rand(30, 120);          // 水平散开距离
+        const dx = Math.cos(angle) * spread;
+        const rise = rand(70, 170);            // 上升距离（整体向上飘）
+        const rot = rand(-200, 200);           // 随机旋转
+        const dur = rand(900, 1600);
+
+        const anim = p.animate(
+          [
+            { transform: "translate(-50%, -50%) translate(0px, 0px) rotate(0deg) scale(0.5)", opacity: 1 },
+            { transform: "translate(-50%, -50%) translate(" + (dx * 0.55) + "px, " + (-rise * 0.45) + "px) rotate(" + (rot * 0.5) + "deg) scale(1.05)", opacity: 1, offset: 0.45 },
+            { transform: "translate(-50%, -50%) translate(" + dx + "px, " + (-rise) + "px) rotate(" + rot + "deg) scale(0.4)", opacity: 0 }
+          ],
+          { duration: dur, easing: "cubic-bezier(.18,.7,.32,1)", fill: "forwards" }
+        );
+        anim.onfinish = function () { p.remove(); };
+      }
+    }
+
+    btn.addEventListener("click", function (e) {
+      // 优先用鼠标/触摸坐标；缺失时退化为按钮中心
+      let x = e.clientX, y = e.clientY;
+      if (!x && !y) {
+        const r = btn.getBoundingClientRect();
+        x = r.left + r.width / 2;
+        y = r.top + r.height / 2;
+      }
+      burst(x, y);
+    });
+  }
+  initGreetParticles();
 })();
