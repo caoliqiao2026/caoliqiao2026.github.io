@@ -2110,6 +2110,7 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 0.9em; }
   color: #7a5c33;
   line-height: 1.8;
 }
+.admin-notice[hidden] { display: none; }
 
 .admin-notice i { font-size: 1.1rem; margin-top: 4px; color: #c99b55; }
 .admin-notice p { margin-top: 4px; }
