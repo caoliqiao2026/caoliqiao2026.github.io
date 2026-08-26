@@ -458,7 +458,6 @@
             src = "assets/awards/" + slug + (count > 1 ? "-" + (i + 1) : "") + ".jpg";
           }
           img.className = "award-img";
-          img.loading = "lazy";
           img.decoding = "async";
           img.alt = title + (count > 1 ? " " + (i + 1) : "");
           img.onload = function () { img.classList.add("loaded"); };
