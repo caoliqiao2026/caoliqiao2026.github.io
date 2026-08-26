@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>曹丽翘 | 个人主页</title>
+  <meta name="description" content="曹丽翘的个人主页 — 文字表达的探索者。Good fortune favors the brave." />
+  <meta name="keywords" content="曹丽翘,个人简历,嘉应学院,数据科学与大数据技术,AI" />
+
+  <!-- 字体 & 图标 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- 顶部滚动进度条 -->
+  <div id="progress-bar" aria-hidden="true"></div>
+
+  <!-- 背景粒子画布 -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- 自定义光标 -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- ======== 导航 ======== -->
+  <header class="nav" id="top">
+    <a class="nav-logo" href="#top">CAO.LQ</a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="#about">关于我</a>
+      <a href="#skills">核心能力</a>
+      <a href="#growth">成长曲线</a>
+      <a href="#honors">荣誉奖项</a>
+      <a href="#interests">兴趣爱好</a>
+      <a href="#showcase">作品橱窗</a>
+      <a href="#guestbook">留言板</a>
+    </nav>
+    <span class="nav-tagline">GOOD FORTUNE FAVORS THE BRAVE</span>
+    <button class="nav-burger" aria-label="打开菜单"><i class="fa-solid fa-bars"></i></button>
+  </header>
+
+  <!-- ======== Hero ======== -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <aside class="hero-visual" data-reveal>
+        <div class="hero-avatar">
+          <img src="assets/avatar.jpg" alt="曹丽翘" />
+        </div>
+        <span class="hero-motto">真实 · 真诚 · 真行</span>
+      </aside>
+
+      <div class="hero-content">
+        <div class="hero-tags" data-reveal>
+          <span class="tag tag-dark">FRESHMAN_2026</span>
+          <span class="tag"><span class="tag-dot"></span>DATA_SCIENCE_MAJOR</span>
+          <span class="tag">JIAYING_UNIVERSITY</span>
+        </div>
+
+        <h1 class="hero-name" aria-label="曹丽翘">
+          <span class="hero-char" data-reveal>曹</span>
+          <span class="hero-char" data-reveal>丽</span>
+          <span class="hero-char" data-reveal>翘</span>
+          <span class="hero-char hero-dot" data-reveal>.</span>
+        </h1>
+
+        <p class="hero-quote" data-reveal>"Good fortune favors the brave."</p>
+
+        <div class="hero-role-switcher" id="hero-role-switcher" data-reveal>
+          <div class="role-tabs" role="tablist" aria-label="角色标签">
+            <button class="role-tab active" role="tab" aria-selected="true" data-index="0">
+              <i class="fa-solid fa-rocket"></i> 创新成长行动派
+            </button>
+            <button class="role-tab" role="tab" aria-selected="false" data-index="1">
+              <i class="fa-solid fa-pen-nib"></i> 文字表达探索者
+            </button>
+            <button class="role-tab" role="tab" aria-selected="false" data-index="2">
+              <i class="fa-solid fa-robot"></i> AI 协作实践者
+            </button>
+            <button class="role-tab" role="tab" aria-selected="false" data-index="3">
+              <i class="fa-solid fa-link"></i> 组织凝聚联结者
+            </button>
+          </div>
+          <div class="role-display">
+            <span class="role-text" id="role-text">创新成长行动派</span>
+            <span class="role-cursor" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="hero-badges" data-reveal>
+          <div class="badge-card">
+            <div class="badge-head">
+              <div class="badge-icon"><i class="fa-solid fa-folder-open"></i></div>
+              <div class="badge-label">RESUME <strong>履历</strong></div>
+            </div>
+            <ul class="badge-list">
+              <li><i class="fa-solid fa-certificate"></i>AI 证书</li>
+              <li><i class="fa-solid fa-pen-fancy"></i>市级以上征文比赛获奖</li>
+              <li><i class="fa-solid fa-medal"></i>优秀团干</li>
+            </ul>
+          </div>
+          <div class="badge-card">
+            <div class="badge-head">
+              <div class="badge-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+              <div class="badge-label">LEARNING <strong>持续学习</strong></div>
+            </div>
+            <ul class="badge-list">
+              <li><i class="fa-solid fa-language"></i>雅思 IELTS</li>
+              <li><i class="fa-solid fa-code"></i>C 语言</li>
+              <li><i class="fa-solid fa-robot"></i>AI</li>
+            </ul>
+          </div>
+          <div class="badge-card">
+            <div class="badge-head">
+              <div class="badge-icon"><i class="fa-solid fa-heart"></i></div>
+              <div class="badge-label">LIFESTYLE <strong>爱好</strong></div>
+            </div>
+            <ul class="badge-list">
+              <li><i class="fa-solid fa-person-running"></i>跑步</li>
+              <li><i class="fa-solid fa-table-tennis-paddle-ball"></i>羽毛球</li>
+              <li><i class="fa-solid fa-comments"></i>辩论</li>
+              <li><i class="fa-solid fa-camera"></i>摄影</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hero-actions" data-reveal>
+          <a class="btn btn-primary" href="#guestbook">打个招呼 <i class="fa-solid fa-arrow-right"></i></a>
+          <button class="btn btn-ghost" id="copy-email">复制邮箱 <i class="fa-regular fa-copy"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">SCROLL_DOWN <i class="fa-solid fa-chevron-down"></i></div>
+  </section>
+
+  <!-- ======== 信念引用（深色锚点区） ======== -->
+  <section class="belief" id="belief">
+    <div class="belief-inner" data-reveal>
+      <span class="belief-mark" aria-hidden="true">&ldquo;</span>
+      <p>"<em>把事做好</em>"比什么都重要——这是我始终坚守的信念。</p>
+      <cite>— CAO_LIQIAO · 2026</cite>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- ======== ABOUT · 关于我 ======== -->
+    <section class="section" id="about">
+      <div class="section-head" data-reveal data-num="01">
+        <span class="section-code">// ABOUT · 01</span>
+        <h2>关于<em>我</em></h2>
+        <p class="section-sub">标签：数据+文字+组织的跨界组</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="panel" data-reveal>
+          <h3 class="panel-title">个人简介</h3>
+          <p>我是曹丽翘，一名真实、真诚、真行的准大一新生，同时是一个正在用 AI 重塑学习方式的探索者。我不仅把 AI 当做工具，更是把它视为我的第二大脑，热衷于探索大语言模型的能力边界。</p>
+          <p>大学四年，我想把它拉回一个更朴素的方向——用所学的能力和不断精进的行动，去回应真实的问题、真诚的协作、真切的集体。</p>
+        </div>
+        <div class="panel" data-reveal>
+          <h3 class="panel-title">基本信息</h3>
+          <ul class="info-list">
+            <li><span class="info-label">姓名</span><span class="info-value">曹丽翘</span></li>
+            <li><span class="info-label">学校</span><span class="info-value">嘉应学院</span></li>
+            <li><span class="info-label">专业</span><span class="info-value">数据科学与大数据技术</span></li>
+            <li><span class="info-label">Slogan</span><span class="info-value"><code class="info-code">真实 · 真诚 · 真行</code></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== SKILLS · 核心能力 ======== -->
+    <section class="section" id="skills">
+      <div class="section-head" data-reveal data-num="02">
+        <span class="section-code">// SKILLS · 02</span>
+        <h2>核心<em>能力</em></h2>
+        <p class="section-sub">在实践与挑战中磨砺出的核心竞争力 · 点击卡片查看详情</p>
+      </div>
+
+      <div class="skills-grid">
+        <article class="skill-card" data-reveal tabindex="0" role="button" data-skill="innovation">
+          <div class="skill-icon"><i class="fa-solid fa-flask"></i></div>
+          <h3>创新与实践</h3>
+          <p>在物理实验制作、数学模型构建等领域积极探索，荣获多项科创类奖项。保持好奇，动手验证，让想法落地。</p>
+          <span class="skill-hint"><i class="fa-solid fa-hand-pointer"></i> 点击查看</span>
+        </article>
+        <article class="skill-card" data-reveal tabindex="0" role="button" data-skill="writing">
+          <div class="skill-icon"><i class="fa-solid fa-pen-nib"></i></div>
+          <h3>文字表达与创作</h3>
+          <p>擅长将想法用文字清晰表达，多次在省市级征文比赛中获奖，具备优秀的文字功底和表达能力。</p>
+          <span class="skill-hint"><i class="fa-solid fa-hand-pointer"></i> 点击查看</span>
+        </article>
+        <article class="skill-card" data-reveal tabindex="0" role="button" data-skill="leadership">
+          <div class="skill-icon"><i class="fa-solid fa-users"></i></div>
+          <h3>组织管理与领导力</h3>
+          <p>连续两年获评「优秀团干」。以责任心为先，把每一件事落到实处、做到最好——从班级事务到校级活动，始终是让老师和同学放心托付的那个人。</p>
+          <span class="skill-hint"><i class="fa-solid fa-hand-pointer"></i> 点击查看</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ======== GROWTH · 成长曲线 ======== -->
+    <section class="section" id="growth">
+      <div class="section-head" data-reveal data-num="03">
+        <span class="section-code">// JOURNEY · 03</span>
+        <h2>成长<em>曲线</em></h2>
+        <p class="section-sub">看斜率，不看截距 · 每一步都在变陡</p>
+      </div>
+
+      <div class="panel growth-panel" data-reveal>
+        <p>大一新生没有耀眼的成就，但有<strong>"斜率"</strong>—— 从爱写作的小孩一路涨到建网站的数据科学新生。</p>
+        <p>这条上升线就是我的 motto 的可视化：<em class="quote-en">"Grow through what you go through."</em></p>
+
+        <div class="timeline">
+          <div class="timeline-item" data-reveal>
+            <span class="timeline-dot"></span>
+            <div class="timeline-body">
+              <span class="timeline-stage">小学</span>
+              <strong>写作萌发</strong>
+              <p>第一次投稿被表扬</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-reveal>
+            <span class="timeline-dot"></span>
+            <div class="timeline-body">
+              <span class="timeline-stage">初中</span>
+              <strong>系统化</strong>
+              <p>班干 · 征文 · 跑步</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-reveal>
+            <span class="timeline-dot"></span>
+            <div class="timeline-body">
+              <span class="timeline-stage">高中</span>
+              <strong>科创突破</strong>
+              <p>物理实验一等奖</p>
+            </div>
+          </div>
+          <div class="timeline-item" data-reveal>
+            <span class="timeline-dot"></span>
+            <div class="timeline-body">
+              <span class="timeline-stage">大一</span>
+              <strong>数据科学</strong>
+              <p>建网站 · 坦克大战 · 拼豆神器</p>
+            </div>
+          </div>
+        </div>
+        <p class="timeline-title">成长曲线 · 斜率比截距重要</p>
+      </div>
+    </section>
+
+    <!-- ======== HONORS · 荣誉奖项 ======== -->
+    <section class="section" id="honors">
+      <div class="section-head" data-reveal data-num="04">
+        <span class="section-code">// HONORS · 04</span>
+        <h2>荣誉<em>奖项</em></h2>
+        <p class="section-sub">每一步脚印，都是成长的见证 · 点击查看奖状原图</p>
+      </div>
+
+      <div class="honors">
+        <h3 class="honor-cat">AI 认证</h3>
+        <article class="honor-card" data-reveal>
+          <div class="honor-body">
+            <h4>科大讯飞 AI 大学堂 · 系列认证</h4>
+            <p>RAG 工程师 · Prompt 工程师 · 微调工程师 · 智能体工程师</p>
+          </div>
+          <button class="btn btn-small award-btn" data-title="科大讯飞 AI 大学堂 · 系列认证" data-slugs="ai-rag,ai-prompt,ai-tuning,ai-agent">查看奖状 <em class="multi-num">4 张</em></button>
+        </article>
+        <article class="honor-card" data-reveal>
+          <div class="honor-body">
+            <h4>达摩院 · 人工智能训练师证书</h4>
+            <p>阿里云智能客服方向 · 初级 / 高级</p>
+          </div>
+          <button class="btn btn-small award-btn" data-title="达摩院 · 人工智能训练师证书" data-slugs="ai-trainer-junior,ai-trainer-advanced">查看奖状 <em class="multi-num">2 张</em></button>
+        </article>
+        <article class="honor-card" data-reveal>
+          <div class="honor-body">
+            <h4>Datawhale × 豆包 MarsCode · AI + 编程能力认证</h4>
+            <p>AI 辅助编程实践能力认证</p>
+          </div>
+          <button class="btn btn-small award-btn" data-title="Datawhale × 豆包 MarsCode · AI + 编程能力认证" data-slug="ai-coding">查看奖状</button>
+        </article>
+
+        <h3 class="honor-cat">市级</h3>
+        <article class="honor-card" data-reveal>
+          <div class="honor-body">
+            <h4>广东省少年儿童践行社会主义核心价值观主题征文 · 湛江市高中组优秀作品奖</h4>
+            <p>《扣紧诚信扣，点亮人生路》· 2024年主题活动</p>
+          </div>
+          <button class="btn btn-small award-btn" data-title="《扣紧诚信扣，点亮人生路》· 湛江市高中组优秀作品奖" data-slug="honor-integrity-city">查看奖状</button>
+        </article>
+        <article class="honor-card" data-reveal>
+          <div class="honor-body">
+            <h4>《奔跑人生：在步履间沉淀快乐的答案》· 市三等奖</h4>
+            <p>全市中小学生"我运动，我快乐"主题征文比赛 · 高中组</p>
+          </div>
+          <button class="btn btn-small award-btn" data-title="《奔跑人生》· 市三等奖" data-slug="honor-running-city">查看奖状</button>
+        </article>
+
+        <h3 class="honor-cat">校级</h3>
+        <article class="honor-card" data-reveal>
+          <div class="honor-body">
+            <h4>"我运动，我快乐"征文 · 校高中组一等奖</h4>
+            <p>2025年岭南师院附中主题征文评选活动</p>
+          </div>
+          <button class="btn btn-small award-btn" data-title="「我运动，我快乐」征文 · 校一等奖" data-slug="honor-running-school">查看奖状</button>
+        </article>
+        <article class="honor-card" data-reveal>
+          <div class="honor-body">
+            <h4>"优秀团干"荣誉称号（连续两年）</h4>
+            <p>2024-2025学年度、2023-2024学年度"五四评优"</p>
+          </div>
+          <button class="btn btn-small award-btn" data-title="优秀团干（连续两年）" data-slugs="honor-cadre-2324,honor-cadre-2425">查看奖状 <em class="multi-num">2 张</em></button>
+        </article>
+        <article class="honor-card" data-reveal>
+          <div class="honor-body">
+            <h4>物理创新实验制作竞赛 · 一等奖</h4>
+            <p>2023-2024学年第一学期高一年级</p>
+          </div>
+          <button class="btn btn-small award-btn" data-title="物理创新实验制作 · 一等奖" data-slug="honor-physics-exp">查看奖状</button>
+        </article>
+        <article class="honor-card" data-reveal>
+          <div class="honor-body">
+            <h4>数学立体模型制作比赛 · 一等奖</h4>
+            <p>2023-2024学年度高一 · "科技城市·未来家园"</p>
+          </div>
+          <button class="btn btn-small award-btn" data-title="数学立体模型制作 · 一等奖" data-slug="honor-math-model">查看奖状</button>
+        </article>
+        <article class="honor-card" data-reveal>
+          <div class="honor-body">
+            <h4>第三届英语配音大赛决赛 · 二等奖</h4>
+            <p>2023-2024学年第二学期高一年级</p>
+          </div>
+          <button class="btn btn-small award-btn" data-title="英语配音大赛 · 二等奖" data-slug="honor-english-dubbing">查看奖状</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- ======== INTERESTS · 兴趣爱好 ======== -->
+    <section class="section" id="interests">
+      <div class="section-head" data-reveal data-num="05">
+        <span class="section-code">// INTERESTS · 05</span>
+        <h2>兴趣<em>爱好</em></h2>
+        <p class="section-sub">享受坚持与挑战的过程</p>
+      </div>
+
+      <div class="interests-grid">
+        <article class="interest-card" data-reveal>
+          <i class="fa-solid fa-person-running"></i>
+          <h3>跑步</h3>
+          <p>享受奔跑时风掠过耳畔的感觉，每一步都是对自我的超越。坚持让我更强大。</p>
+        </article>
+        <article class="interest-card" data-reveal>
+          <i class="fa-solid fa-comments"></i>
+          <h3>听辩论赛</h3>
+          <p>热爱思维的碰撞与逻辑的交锋，在辩论中学习不同的视角，锻炼批判性思维。</p>
+        </article>
+        <article class="interest-card" data-reveal>
+          <i class="fa-solid fa-table-tennis-paddle-ball"></i>
+          <h3>打羽毛球</h3>
+          <p>球场上的每一次挥拍都是专注与反应的考验，享受竞技带来的快乐与成长。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ======== SHOWCASE · 作品橱窗 ======== -->
+    <section class="section" id="showcase">
+      <div class="section-head" data-reveal data-num="06">
+        <span class="section-code">// SHOWCASE · 06</span>
+        <h2>作品<em>橱窗</em></h2>
+        <p class="section-sub">Show, don't tell — 这就是我用 AI 做出的东西</p>
+      </div>
+
+      <div class="showcase-list">
+        <div class="showcase-card" data-reveal>
+          <div class="showcase-head">
+            <div>
+              <h3>附加题 · 坦克大战 <span class="showcase-en">Battle City</span></h3>
+              <p class="showcase-desc">保护基地 · 消灭敌军 · WASD / 方向键移动 · Space 开火</p>
+            </div>
+            <button class="btn btn-primary" id="game-start">▶ 开始游戏</button>
+          </div>
+
+          <div class="game-canvas-box">
+            <div class="game-brand">曹丽翘 <span>×</span> 浪尖社区</div>
+            <canvas id="game-canvas" width="520" height="520"></canvas>
+            <div class="game-overlay" id="game-overlay">
+              <div class="game-overlay-inner">
+                <h4 id="overlay-title">TANK BATTLE</h4>
+                <p id="overlay-sub">保护基地 · 消灭敌军</p>
+                <button class="btn btn-primary" id="overlay-btn">开始游戏</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-touch">
+            <div class="touch-dpad" id="touch-dpad">
+              <button class="touch-btn" data-dir="up" aria-label="上"><i class="fa-solid fa-arrow-up"></i></button>
+              <button class="touch-btn" data-dir="left" aria-label="左"><i class="fa-solid fa-arrow-left"></i></button>
+              <button class="touch-btn" data-dir="right" aria-label="右"><i class="fa-solid fa-arrow-right"></i></button>
+              <button class="touch-btn" data-dir="down" aria-label="下"><i class="fa-solid fa-arrow-down"></i></button>
+            </div>
+            <button class="touch-btn touch-fire" id="touch-fire" aria-label="开火"><i class="fa-solid fa-crosshairs"></i></button>
+          </div>
+          <p class="game-hint">提示：移动端 / 预览面板请使用下方屏幕按键</p>
+
+          <div class="showcase-info">
+            <h4>AI 协作说明</h4>
+            <p>这个游戏是我用 <strong>AI 协作</strong>完成的。我负责<strong>设计决策</strong>（玩法规则、地图布局、配色风格、难度曲线），AI 负责把我的想法<strong>翻译成代码</strong>。</p>
+            <p><strong>技术栈</strong>：HTML5 Canvas + TypeScript 游戏引擎，原生 <code>requestAnimationFrame</code> 渲染循环，无第三方游戏库——所有碰撞检测、AI 寻路、粒子效果都是从零写的。</p>
+            <p><strong>我学到了什么</strong>：游戏开发不只是写代码，更是<strong>系统设计</strong>——状态机、实体管理、帧率无关运动。AI 是杠杆，但<strong>驾驭 AI 的判断力</strong>才是真正的能力。</p>
+            <div class="skill-tags">
+              <span>Canvas API</span><span>TypeScript</span><span>AABB碰撞</span><span>状态机</span><span>触屏适配</span><span>游戏循环</span><span>粒子效果</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase-card" data-reveal>
+          <div class="showcase-head">
+            <div>
+              <h3>拼豆神器 <span class="showcase-en">Pixel Bead Studio</span></h3>
+              <p class="showcase-desc">浪尖社区风格 · 照片一键转拼豆图纸</p>
+            </div>
+            <a class="btn btn-primary" href="https://db58q6y66mp1.meoo.pub" target="_blank" rel="noopener noreferrer">▶ 直接开玩 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </div>
+
+          <div class="showcase-media" id="bead-media">
+            <div class="showcase-gallery" id="bead-gallery">
+              <figure>
+                <img src="assets/showcase/bead-home.jpg" alt="拼豆神器首页" loading="lazy" />
+                <figcaption>首页 · 浪尖儿社区风格</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/showcase/bead-preview.png" alt="拼豆图纸预览" loading="lazy" />
+                <figcaption>图纸预览 · 颜色与物料清单</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="showcase-info">
+            <h4>AI 协作说明</h4>
+            <p>这个「拼豆神器」基于<strong>秒悟上已经开源的项目</strong>改造而来。我把它调整成了<strong>浪尖社区风格</strong>的交互与视觉：上传照片即可生成对应的拼豆图纸，降低手工设计门槛。</p>
+            <p>在改造过程中，我负责<strong>风格定位、交互流程与页面结构</strong>，AI 协助完成代码实现与细节调优。它是我把「已有开源能力」与「社区品牌感」结合的一次实践。</p>
+            <div class="skill-tags">
+              <span>开源二次创作</span><span>秒悟生态</span><span>浪尖社区</span><span>图像生成</span><span>交互设计</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== GUESTBOOK · Communication ======== -->
+    <section class="section" id="guestbook">
+      <div class="section-head" data-reveal data-num="07">
+        <span class="section-code">// Communication · 07</span>
+        <h2>真诚交流。<em>真心回应。</em></h2>
+        <p class="section-sub">每一次连接都指向更好的未来。</p>
+      </div>
+
+      <div class="gb-tools" data-reveal>
+        <span class="gb-mode" id="gb-mode" style="display:none"></span>
+        <div class="gb-actions">
+          <button class="gb-refresh" id="gb-refresh" type="button"><i class="fa-solid fa-rotate"></i> SYNC</button>
+          <a class="gb-admin-link" href="admin.html" title="留言管理">[ ADMIN ]</a>
+        </div>
+      </div>
+
+      <div class="guestbook-grid">
+        <form class="panel gb-form" id="gb-form" data-reveal>
+          <div class="gb-field">
+            <label class="gb-label"><span>01 / 身份标识</span></label>
+            <input class="gb-input" id="gb-name" type="text" maxlength="20" placeholder="你的名字 / 昵称" required />
+          </div>
+          <div class="gb-field">
+            <label class="gb-label"><span>02 / 消息内容</span></label>
+            <textarea class="gb-input gb-textarea" id="gb-text" maxlength="200" placeholder="想对曹丽翘说点什么…" required></textarea>
+            <div class="gb-counter"><span id="gb-count">0</span> / 200</div>
+          </div>
+          <button class="btn btn-primary gb-send" type="submit">发送信息 <i class="fa-solid fa-paper-plane"></i></button>
+          <p class="gb-status" id="gb-status"></p>
+        </form>
+
+        <div class="gb-list" data-reveal>
+          <div class="gb-empty" id="gb-empty">
+            <i class="fa-solid fa-satellite-dish"></i>
+            <p>NO_SIGNAL — 成为第一条留言</p>
+          </div>
+          <div class="gb-messages" id="gb-messages"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======== Footer ======== -->
+  <footer class="footer">
+    <span class="footer-watermark" aria-hidden="true">CAO.LIQIAO</span>
+    <div class="contact-bar" data-reveal>
+      <div class="contact-item">
+        <div class="contact-label"><i class="fa-solid fa-mobile-screen"></i>手机号</div>
+        <a href="tel:17875836825">178-7583-6825</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label"><i class="fa-solid fa-envelope"></i>邮箱</div>
+        <a href="mailto:3813271225@qq.com">3813271225@qq.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label"><i class="fa-brands fa-qq"></i>QQ</div>
+        <span>3813271225</span>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label"><i class="fa-solid fa-location-dot"></i>所在地</div>
+        <span>广东 · 梅州</span>
+      </div>
+    </div>
+    <p class="footer-meta">Made with <i class="fa-solid fa-heart"></i> by 曹丽翘</p>
+    <p class="footer-quote">"Good fortune favors the brave." · 2026</p>
+  </footer>
+
+  <!-- 技能详情弹窗 -->
+  <div class="modal skill-modal" id="skill-modal" role="dialog" aria-modal="true" aria-label="能力详情">
+    <div class="modal-backdrop" data-close="skill-modal"></div>
+    <div class="modal-box">
+      <button class="modal-close" data-close="skill-modal" aria-label="关闭"><i class="fa-solid fa-xmark"></i></button>
+      <h4 class="modal-title" id="skill-modal-title"></h4>
+      <div class="modal-body" id="skill-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- 奖状弹窗 -->
+  <div class="modal" id="award-modal" role="dialog" aria-modal="true" aria-label="奖状查看">
+    <div class="modal-backdrop" data-close="modal"></div>
+    <div class="modal-box">
+      <button class="modal-close" data-close="modal" aria-label="关闭"><i class="fa-solid fa-xmark"></i></button>
+      <h4 class="modal-title" id="award-modal-title"></h4>
+      <div class="modal-body" id="award-modal-body">
+        <div class="award-placeholder">
+          <i class="fa-regular fa-image"></i>
+          <p>奖状图片待补充</p>
+          <p class="award-tip">把奖状照片放进 <code>assets/awards/</code> 目录即可显示</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/guestbook.js"></script>
+</body>
+</html>

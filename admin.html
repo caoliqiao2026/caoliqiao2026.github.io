@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>留言管理 · 曹丽翘个人主页</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- 字体 & 图标（与主站一致） -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="admin-body">
+
+  <div class="admin-shell">
+
+    <!-- 顶栏 -->
+    <header class="admin-topbar">
+      <div class="admin-brand">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span class="admin-brand-text">ADMIN · 留言管理</span>
+      </div>
+      <div class="admin-topbar-actions">
+        <span class="admin-mode-badge" id="admin-mode-badge"></span>
+        <a class="admin-link-home" href="index.html"><i class="fa-solid fa-arrow-left"></i> 返回主页</a>
+      </div>
+    </header>
+
+    <!-- 未配置云端提示 -->
+    <div class="admin-notice" id="admin-noconfig" hidden>
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <div>
+        <strong>尚未连接云端后端</strong>
+        <p>请先按 <code>SUPABASE_SETUP.md</code> 完成配置：注册 Supabase → 运行 <code>supabase-setup.sql</code> → 把 Project URL 和 anon key 填入 <code>js/config.js</code>，然后刷新本页。</p>
+      </div>
+    </div>
+
+    <!-- 登录卡片 -->
+    <div class="admin-login panel" id="admin-login">
+      <h2 class="admin-login-title"><i class="fa-solid fa-lock"></i> 管理员验证</h2>
+      <p class="admin-login-sub">输入管理密码，即可管理留言板数据（删除留言 / 导出 / 迁移）。</p>
+      <form class="admin-login-form" id="admin-login-form">
+        <input class="gb-input" id="admin-pass" type="password" maxlength="64" placeholder="管理密码" autocomplete="current-password" required />
+        <button class="btn btn-primary" type="submit" id="admin-login-btn">验证身份 <i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+      </form>
+      <p class="gb-status" id="admin-login-status"></p>
+    </div>
+
+    <!-- 管理面板（登录后显示） -->
+    <div class="admin-panel" id="admin-panel" hidden>
+
+      <!-- 统计条 -->
+      <div class="admin-stats" id="admin-stats">
+        <div class="admin-stat">
+          <span class="admin-stat-num" id="stat-total">–</span>
+          <span class="admin-stat-label">总留言</span>
+        </div>
+        <div class="admin-stat">
+          <span class="admin-stat-num" id="stat-today">–</span>
+          <span class="admin-stat-label">今日新增</span>
+        </div>
+        <div class="admin-stat">
+          <span class="admin-stat-num" id="stat-week">–</span>
+          <span class="admin-stat-label">近 7 天</span>
+        </div>
+      </div>
+
+      <!-- 工具条 -->
+      <div class="admin-toolbar">
+        <button class="btn btn-small" id="admin-reload"><i class="fa-solid fa-rotate"></i> 刷新列表</button>
+        <button class="btn btn-small" id="admin-export-json"><i class="fa-solid fa-file-code"></i> 导出 JSON</button>
+        <button class="btn btn-small" id="admin-export-csv"><i class="fa-solid fa-file-csv"></i> 导出 CSV</button>
+        <button class="btn btn-small" id="admin-migrate" hidden><i class="fa-solid fa-cloud-arrow-up"></i> 迁移本机旧留言</button>
+        <button class="btn btn-small admin-btn-danger-ghost" id="admin-logout"><i class="fa-solid fa-right-from-bracket"></i> 退出</button>
+      </div>
+
+      <!-- 留言列表 -->
+      <div class="admin-list" id="admin-list"></div>
+
+      <div class="admin-more">
+        <button class="btn btn-small" id="admin-more-btn" hidden>加载更多</button>
+        <p class="gb-status" id="admin-list-status"></p>
+      </div>
+    </div>
+
+    <footer class="admin-footer">
+      <span class="admin-watermark" aria-hidden="true">CAO.LIQIAO</span>
+      <p>管理密码仅存在云端数据库（SHA-256 哈希）· 删除操作经服务端校验</p>
+    </footer>
+
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
