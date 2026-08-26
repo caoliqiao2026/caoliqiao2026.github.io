@@ -1830,6 +1830,23 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 0.9em; }
   transform: translate(-50%, 0);
 }
 
+/* ---------- 「打个招呼」粒子特效层 ---------- */
+#greet-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9998;
+}
+.greet-particle {
+  position: fixed;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));
+}
+
 .footer-meta { position: relative; font-size: 0.85rem; color: var(--text-muted); }
 .footer-meta i { color: var(--c-primary); margin: 0 3px; }
 
