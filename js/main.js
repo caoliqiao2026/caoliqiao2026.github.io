@@ -537,6 +537,8 @@
     }
 
     btn.addEventListener("click", function (e) {
+      // 阻止链接默认跳转（不滚动/切换到留言板），仅播放粒子特效
+      e.preventDefault();
       // 优先用鼠标/触摸坐标；缺失时退化为按钮中心
       let x = e.clientX, y = e.clientY;
       if (!x && !y) {
