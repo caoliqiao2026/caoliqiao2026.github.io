@@ -1842,9 +1842,9 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 0.9em; }
   position: fixed;
   pointer-events: none;
   user-select: none;
-  line-height: 1;
+  border-radius: 50%;
   will-change: transform, opacity;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));
+  box-shadow: 0 1px 3px rgba(0,0,0,0.18);
 }
 
 .footer-meta { position: relative; font-size: 0.85rem; color: var(--text-muted); }
@@ -1941,15 +1941,8 @@ code, kbd, pre { font-family: var(--font-mono); font-size: 0.9em; }
   border-radius: var(--radius-sm);
   margin-bottom: 12px;
   box-shadow: var(--shadow-md);
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
   background: rgba(203, 175, 152, 0.12);
   min-height: 220px;
-}
-.award-img.loaded {
-  opacity: 1;
-  transform: none;
 }
 
 /* ---------- 响应式 ---------- */
